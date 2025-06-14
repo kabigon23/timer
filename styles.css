@@ -1,0 +1,359 @@
+:root {
+    --bg-color: #f0f9ff;
+    --container-bg: white;
+    --text-color: #2c5282;
+    --text-secondary: #4a5568;
+    --time-bg: #ebf8ff;
+    --border-color: #bee3f8;
+    --btn-primary: #4299e1;
+    --btn-primary-hover: #3182ce;
+    --btn-secondary: #48bb78;
+    --btn-secondary-hover: #38a169;
+    --shadow-color: rgba(0, 0, 0, 0.1);
+}
+
+[data-theme="dark"] {
+    --bg-color: #1a202c;
+    --container-bg: #2d3748;
+    --text-color: #90cdf4;
+    --text-secondary: #a0aec0;
+    --time-bg: #2c5282;
+    --border-color: #4299e1;
+    --btn-primary: #3182ce;
+    --btn-primary-hover: #2b6cb0;
+    --btn-secondary: #38a169;
+    --btn-secondary-hover: #2f855a;
+    --shadow-color: rgba(0, 0, 0, 0.3);
+    --input-text: #ffffff;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial Rounded MT Bold', 'Arial', sans-serif;
+}
+
+body {
+    background-color: var(--bg-color);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background-color 0.3s;
+}
+
+.container {
+    background-color: var(--container-bg);
+    padding: 2rem;
+    border-radius: 20px;
+    box-shadow: 0 8px 24px var(--shadow-color);
+    text-align: center;
+    max-width: 500px;
+    width: 90%;
+    position: relative;
+    transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+.theme-btn {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    padding: 0.5rem;
+    font-size: 1.2rem;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    border-radius: 50%;
+    width: 2.5rem;
+    height: 2.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s;
+}
+
+.theme-btn:hover {
+    background-color: var(--time-bg);
+    transform: rotate(15deg);
+}
+
+.theme-icon {
+    transition: transform 0.3s;
+}
+
+[data-theme="dark"] .theme-icon {
+    transform: rotate(180deg);
+}
+
+h1, .title-input {
+    color: var(--text-color);
+}
+
+.time-unit {
+    background-color: var(--time-bg);
+    color: var(--text-color);
+}
+
+.time-unit label {
+    color: var(--text-secondary);
+}
+
+.title-input::placeholder {
+    color: var(--text-secondary);
+}
+
+.edit-btn {
+    background-color: var(--btn-primary);
+    color: white;
+}
+
+.edit-btn:hover {
+    background-color: var(--btn-primary-hover);
+}
+
+.edit-btn.editing {
+    background-color: var(--btn-secondary);
+}
+
+.edit-btn.editing:hover {
+    background-color: var(--btn-secondary-hover);
+}
+
+.title-section {
+    margin-bottom: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 0.5rem;
+}
+
+.title-container {
+    width: 100%;
+}
+
+.title-input {
+    width: 100%;
+    font-size: 2rem;
+    text-align: center;
+    border: none;
+    background: transparent;
+    padding: 0.5rem;
+    border-radius: 10px;
+    transition: all 0.2s;
+}
+
+.title-input:read-only {
+    cursor: default;
+}
+
+.title-input:not(:read-only) {
+    background-color: #f7fafc;
+    box-shadow: 0 0 0 2px #bee3f8;
+}
+
+.title-input:hover:not(:read-only) {
+    background-color: #f7fafc;
+}
+
+.title-input:focus {
+    outline: none;
+}
+
+.edit-btn {
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s;
+    white-space: nowrap;
+}
+
+.edit-btn.small {
+    padding: 0.25rem 0.5rem;
+    font-size: 0.8rem;
+    border-radius: 6px;
+    opacity: 0.8;
+    margin-right: 0.5rem;
+}
+
+.edit-btn.small:hover {
+    opacity: 1;
+    transform: translateY(-1px);
+}
+
+.edit-btn.small:active {
+    transform: translateY(0);
+}
+
+h1 {
+    margin-bottom: 2rem;
+    font-size: 2rem;
+}
+
+.timer-display {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.time-unit {
+    padding: 1rem;
+    border-radius: 15px;
+    min-width: 100px;
+}
+
+.time-unit span {
+    font-size: 3rem;
+    display: block;
+    font-weight: bold;
+}
+
+.time-unit label {
+    font-size: 1.2rem;
+}
+
+.controls {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.time-selector {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    align-items: center;
+}
+
+.time-inputs {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    margin-top: 0.5rem;
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.3rem;
+}
+
+.input-group input {
+    width: 80px;
+    padding: 0.5rem;
+    font-size: 1.2rem;
+    border: 2px solid #bee3f8;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.input-group label {
+    font-size: 1rem;
+}
+
+.time-selector label {
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+}
+
+.btn {
+    padding: 1rem 2rem;
+    font-size: 1.2rem;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: transform 0.1s, background-color 0.2s;
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+}
+
+.btn:active {
+    transform: translateY(0);
+}
+
+.primary {
+    background-color: #4299e1;
+    color: white;
+}
+
+.primary:hover {
+    background-color: #3182ce;
+}
+
+.secondary {
+    background-color: #e2e8f0;
+    color: #4a5568;
+}
+
+.secondary:hover {
+    background-color: #cbd5e0;
+}
+
+.time-selector label,
+.input-group label {
+    color: var(--text-secondary);
+    font-size: 1rem;
+}
+
+[data-theme="dark"] .time-selector label,
+[data-theme="dark"] .input-group label {
+    color: var(--input-text);
+}
+
+.time-selector input,
+.input-group input {
+    width: 80px;
+    padding: 0.5rem;
+    font-size: 1.2rem;
+    border: 2px solid var(--border-color);
+    border-radius: 10px;
+    text-align: center;
+    background-color: var(--container-bg);
+    color: var(--input-text);
+}
+
+[data-theme="dark"] .time-selector input,
+[data-theme="dark"] .input-group input {
+    color: var(--input-text);
+}
+
+[data-theme="dark"] .time-selector input::placeholder,
+[data-theme="dark"] .input-group input::placeholder {
+    color: var(--text-secondary);
+}
+
+/* 반응형 디자인 */
+@media (max-width: 480px) {
+    .container {
+        padding: 1.5rem;
+    }
+
+    .timer-display {
+        gap: 1rem;
+    }
+
+    .time-unit {
+        min-width: 80px;
+        padding: 0.8rem;
+    }
+
+    .time-unit span {
+        font-size: 2.5rem;
+    }
+
+    .btn {
+        padding: 0.8rem 1.5rem;
+    }
+} 
